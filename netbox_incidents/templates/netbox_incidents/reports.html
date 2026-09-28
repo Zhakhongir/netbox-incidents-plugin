@@ -1,0 +1,29 @@
+{% extends 'generic/_base.html' %}
+{% load form_helpers %}
+{% load i18n %}
+
+{% block title %}{% trans "Отчёты" %}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    {% for panel in panels %}
+      <div class="col col-md-6 mb-3">
+        <div class="card">
+          <h2 class="card-header">{{ panel.report.name }}</h2>
+          <div class="card-body">
+            <p class="text-muted">{{ panel.report.description }}</p>
+            <form action="{% url 'plugins:netbox_incidents:report_generate' report_slug=panel.report.slug %}" method="post">
+              {% csrf_token %}
+              {% render_form panel.form %}
+              <div class="text-end mt-3">
+                <button type="submit" class="btn btn-primary">
+                  <span class="mdi mdi-file-excel-outline" aria-hidden="true"></span> {% trans "Скачать" %}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

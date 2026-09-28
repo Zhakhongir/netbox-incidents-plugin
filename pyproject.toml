@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netbox-incidents"
+version = "1.0.0"
+description = "База инцидентов для NetBox — Device/Interface/Module/Rack, независимо от Journal Entries"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Zhakhongir Mirzayev" },
+]
+keywords = ["netbox", "netbox-plugin", "incidents", "monitoring"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: Django",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+dependencies = ["openpyxl>=3.1"]
+
+[project.urls]
+Homepage = "https://github.com/Zhakhongir/netbox-incidents"
+Issues = "https://github.com/Zhakhongir/netbox-incidents/issues"
+
+[tool.setuptools.packages.find]
+include = ["netbox_incidents*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+netbox_incidents = ["templates/**/*.html"]
