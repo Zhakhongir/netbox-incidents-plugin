@@ -56,19 +56,19 @@
 ## Скриншоты
 
 1. **Список инцидентов** — общий вид таблицы с фильтрами, статусами и причинами.
-![Список инцидентов](netbox-incidents-plugin/doc/img/incident_list.png)
+![Список инцидентов](doc/img/incident_list.PNG)
 2. **Форма создания инцидента** — выбор объекта (устройство/интерфейс/модуль/стойка), контактного лица, статуса, причины, дат и комментария.
-![Форма создания инцидента](netbox-incidents-plugin/doc/img/incident_add.png)
+![Форма создания инцидента](doc/img/incident_add.PNG)
 3. **Страница отчётов** — три блока: «Общий отчёт», «Детальный отчёт», «Статистика» с выбором периода.
-![Страница отчётов](netbox-incidents-plugin/doc/img/incident_reports.png)
+![Страница отчётов](doc/img/incident_reports.PNG)
 4. **Вкладка Incidents на карточке устройства** — список инцидентов и форма быстрого добавления.
-![Вкладка Incidents на карточке устройства](netbox-incidents-plugin/doc/img/incident_object_tab.png)
+![Вкладка Incidents на карточке устройства](doc/img/incident_object_tab.PNG)
 5. **Пример общего отчёта** (xlsx) — плоская таблица с группировкой по группам сайтов.
-![Пример общего отчёта](netbox-incidents-plugin/doc/img/report_general.png)
+![Пример общего отчёта](doc/img/report_general.PNG)
 6. **Пример детального отчёта** (xlsx) — иерархическая группировка с подытогами.
-![Пример детального отчёта](netbox-incidents-plugin/doc/img/report_detail.png)
+![Пример детального отчёта](doc/img/report_detail.PNG)
 7. **Пример статистики** (xlsx) — сводная таблица по причинам и типам объектов.
-![Пример статистики](netbox-incidents-plugin/doc/img/report_static.png)
+![Пример статистики](doc/img/report_static.PNG)
 
 ## Требования
 
