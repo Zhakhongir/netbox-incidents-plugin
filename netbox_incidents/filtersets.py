@@ -1,4 +1,5 @@
 import django_filters
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext as _
 
 from netbox.filtersets import NetBoxModelFilterSet
@@ -6,11 +7,17 @@ from tenancy.models import Contact
 from utilities.filters import MultiValueContentTypeFilter
 
 from .choices import IncidentStatusChoices, IncidentCauseChoices
-from .models import Incident
+from .models import Incident, ALLOWED_OBJECT_TYPES
 
 
 class IncidentFilterSet(NetBoxModelFilterSet):
     assigned_object_type = MultiValueContentTypeFilter()
+    assigned_object_type_id = django_filters.ModelMultipleChoiceFilter(
+        queryset=ContentType.object.filter(app_label='dcim', model__in=ALLOWED_OBJECT_TYPES),
+        label=_('Object type (ID)'),
+        distinct=False
+    )
+    
     assigned_contact_id = django_filters.ModelMultipleChoiceFilter(
         queryset=Contact.objects.all(),
         label=_('Contact (ID)'),
@@ -35,7 +42,7 @@ class IncidentFilterSet(NetBoxModelFilterSet):
     class Meta:
         model = Incident
         fields = (
-            'id', 'assigned_object_type', 'assigned_object_id', 'status', 'cause',
+            'id', 'assigned_object_type', 'assigned_object_type_id', 'assigned_object_id', 'status', 'cause',
             'assigned_contact_id', 'assigned_contact', 'start_date', 'end_date',
         )
 
