@@ -95,6 +95,16 @@ class Incident(NetBoxModel):
                 'end_date': _("Дата окончания не может быть раньше даты начала.")
             })
 
+        if self.status == IncidentStatusChoices.STATUS_CLOSED and not self.end_date:
+            raise ValidationError({
+                'end_date': _("Для закрытого инцидента укажите дату окончания.")
+            })
+
+        if self.status == IncidentStatusChoices.STATUS_OPEN and elf.end_date:
+            raise ValidationError({
+                'status': _("Инцидент с датой окончания должен иметь статус <<Закрыто>>.")
+            })
+
     def get_status_color(self):
         return IncidentStatusChoices.colors.get(self.status)
 
