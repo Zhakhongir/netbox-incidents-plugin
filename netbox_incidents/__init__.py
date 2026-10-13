@@ -15,5 +15,8 @@ class NetBoxIncidentsConfig(PluginConfig):
         'contact_group_slug': '',
     }
 
+    def ready(self):
+        super().ready()
+        from . import signals     # noqa: F401
 
 config = NetBoxIncidentsConfig
