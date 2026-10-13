@@ -156,7 +156,7 @@ class IncidentFilterForm(NetBoxModelFilterSetForm):
     model = Incident
     fieldsets = (
         FieldSet('q', 'filter_id'),
-        FieldSet('assigned_object_type_id', 'assigned_contact', 'status', 'cause', name=_('Атрибуты')),
+        FieldSet('assigned_object_type_id', 'assigned_contact_id', 'status', 'cause', name=_('Атрибуты')),
         FieldSet('start_date_after', 'end_date_before', name=_('Даты')),
     )
     assigned_object_type_id = ContentTypeMultipleChoiceField(
@@ -164,7 +164,7 @@ class IncidentFilterForm(NetBoxModelFilterSetForm):
         required=False,
         label=_('Тип объекта'),
     )
-    assigned_contact = DynamicModelMultipleChoiceField(
+    assigned_contact_id = DynamicModelMultipleChoiceField(
         queryset=Contact.objects.all(),
         required=False,
         label=_('Контактное лицо'),
